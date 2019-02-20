@@ -15,7 +15,7 @@ common part:
                                   | ElasticSearch |
                                   -----------------
 
-Project Name: online notepad
+Project Name: online notepad 
 
 Description: ensemble of microservices that offer a functionality of a notepad;
 
