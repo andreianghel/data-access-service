@@ -12,7 +12,8 @@ import java.util.List;
  * @author ananghel on 2/19/2019
  */
 @Repository
-public interface ArticleRepository extends ElasticsearchRepository<Article, Integer> {
+public interface ArticleRepository extends ElasticsearchRepository<Article, String> {
 
+    List<Article> findAllOrderByCreationDate();
 
- }
+}

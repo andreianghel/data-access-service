@@ -18,6 +18,7 @@ dependencies {
     implementation 'org.elasticsearch:elasticsearch'
     implementation 'org.springframework.kafka:spring-kafka'
     //implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:2.1.0.RELEASE'
+    implementation 'javax.persistence:javax.persistence-api:2.2'
     implementation 'org.springframework.boot:spring-boot-starter-web:2.1.0.RELEASE'
     implementation 'org.elasticsearch.client:elasticsearch-rest-high-level-client'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

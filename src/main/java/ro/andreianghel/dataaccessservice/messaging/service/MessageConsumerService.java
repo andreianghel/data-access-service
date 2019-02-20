@@ -6,7 +6,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 
-@Service
+//@Service
 public class MessageConsumerService {
 
     public static final String TOPIC_ADD = "add_entry";

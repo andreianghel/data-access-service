@@ -28,12 +28,17 @@ public class ArticleService {
     }
 
 
-    public Optional<Article> findOne(int id) {
+  /*  public Optional<Article> findOne(int id) {
         return articleRepository.findById(id);
     }
+*/
 
     public Iterable<Article> findAll() {
         return articleRepository.findAll();
+    }
+
+    public Iterable<Article> findAllOrderByCreationDate() {
+        return articleRepository.findAllOrderByCreationDate();
     }
 
     public long count() {
@@ -46,9 +51,5 @@ public class ArticleService {
 
     public void deleteAll() {
         articleRepository.deleteAll();
-    }
-
-    public Optional<Article> findById(int id) {
-        return articleRepository.findById(id);
     }
 }
