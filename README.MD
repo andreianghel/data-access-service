@@ -18,6 +18,7 @@ common part:
 Project Name: online notepad
 
 Description: ensemble of microservices that offer a functionality of a notepad;
+Async communication between the front end and backend, so as to facilitate multiple user usage;
 
 Logical components:
 
@@ -48,6 +49,11 @@ TO DO:
 [] implement the gui;
 
 [] deploy on cloud;
+
+
+extra:
+[] add batch capability when processing/displaying list of items
+(as in each returned article should be a separate kafka message and update the gui in real time if any messages are added on the fly)
 
 
 

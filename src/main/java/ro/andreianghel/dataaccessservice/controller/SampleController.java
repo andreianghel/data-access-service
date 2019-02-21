@@ -53,7 +53,9 @@ public class SampleController {
         if (counter % 3 == 2) {
             text += "noop";
         }
-        Article auxArticle = new Article("text: " + text);
+        text += counter;
+
+        Article auxArticle = new Article(text);
         counter++;
 
         System.out.println("added one");
@@ -90,7 +92,7 @@ public class SampleController {
         List<Article> list = elasticsearchTemplate.queryForList(searchQuery, Article.class);
         System.out.println("begin-----------------");
         list.forEach(x -> System.out.print(x + " "));
-        System.out.println("done------------------");
+        System.out.println("\ndone------------------");
         return list;
     }
 

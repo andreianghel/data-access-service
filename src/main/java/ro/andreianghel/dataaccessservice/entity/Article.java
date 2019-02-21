@@ -5,6 +5,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
@@ -14,7 +15,7 @@ import java.util.Random;
  * @author ananghel on 2/19/2019
  */
 @Document(indexName = "blog2", type = "article2")
-public class Article {
+public class Article implements Serializable {
 
     @Id
     private String id;
@@ -73,5 +74,13 @@ public class Article {
         String generatedString = buffer.toString();
 
         return generatedString;
+    }
+
+    @Override
+    public String toString() {
+        return "Article {" +
+                " creationDate=" + creationDate +
+                ", text='" + text + '\'' +
+                '}';
     }
 }
