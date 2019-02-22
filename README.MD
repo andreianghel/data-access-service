@@ -23,6 +23,7 @@ Async communication between the front end and backend, so as to facilitate multi
 Logical components:
 
 -UI: for now, just a REST Api, a real gui will be made with thymeleaf or flask;
+-> future development, the ui will use web sockets or somehow pool for new messages and display them.
 
 -UI service: gets requests from the user and puts the requests on a kafka topic; receives messages from the broker and sends them to the gui;
 

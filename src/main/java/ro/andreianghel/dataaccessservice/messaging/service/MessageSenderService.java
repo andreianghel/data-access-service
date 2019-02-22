@@ -34,6 +34,9 @@ public class MessageSenderService {
     public void sendMessage(String topic, String message) {
         // System.out.println(String.format("#### -> Producing message -> %s", message));
         this.kafkaTemplate.send(topic, message);
+
+        // flush data
+        this.kafkaTemplate.flush();
     }
 
 }
