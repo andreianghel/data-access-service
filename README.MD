@@ -51,21 +51,21 @@ TO DO:
 
 [X] add service discovery and api gateway
 
-[] implement the services/expose basic rest;
+[ ] implement the services/expose basic rest;
 
-[]
+[ ]
 
-[] Dockerize every component;
+[ ] Dockerize every component;
 
-[] docker stack all;
+[ ] docker stack all;
 
-[] implement the gui;
+[ ] implement the gui;
 
-[] deploy on cloud;
+[ ] deploy on cloud;
 
-[] enrich the user posible actions
+[ ] enrich the user posible actions
 
-[] create and integrate the user analytics
+[ ] create and integrate the user analytics
 
 
 
