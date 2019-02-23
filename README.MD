@@ -10,12 +10,19 @@ common part:
 |    UI    | <--- | Kafka  | <---  | Data Access |  
 |  Service | ---> | Broker | --->  |   Service   |
 ------------      ----------       ---------------
-                                         |
-                                  -----------------
-                                  | ElasticSearch |
-                                  -----------------
+                      |                   |
+                ----------------   -----------------
+                | User Actions |   | ElasticSearch |
+                |   Analytics  |   -----------------
+                ----------------
+                		|
+                -----------------
+                | Some nosql db |
+                ----------------- 
 
-Project Name: online notepad 
+
+
+Project Name: collaborative online notepad 
 
 Description: ensemble of microservices that offer a functionality of a notepad;
 Async communication between the front end and backend, so as to facilitate multiple user usage;
@@ -32,6 +39,10 @@ Logical components:
 -data access service: get messages and stores entries, query the ES, etc.; pushes responses back to the topic;
 
 -persistence: used mainly for persistence and the fuzzy query feature;
+
+- (future) user action analytics: collects data about the users actions and stores them to be later procesed;
+
+
 
 Under the hood: clasical Netflix cloud components: Eureka for service discovery, Zuul for routing and filtering, Spring boot for everything, Kafka for messaging, ElasticSearch for persistence and quering;
 
@@ -51,10 +62,11 @@ TO DO:
 
 [] deploy on cloud;
 
+[] enrich the user posible actions
 
-extra:
-[] add batch capability when processing/displaying list of items
-(as in each returned article should be a separate kafka message and update the gui in real time if any messages are added on the fly)
+[] create and integrate the user analytics
+
+
 
 
 
