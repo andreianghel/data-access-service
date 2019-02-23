@@ -1,3 +1,4 @@
+<!-- language: lang-none -->
 proof of concept project:
 
 common part:
@@ -29,16 +30,16 @@ Async communication between the front end and backend, so as to facilitate multi
 
 Logical components:
 
--UI: for now, just a REST Api, a real gui will be made with thymeleaf or flask;
+- UI: for now, just a REST Api, a real gui will be made with thymeleaf or flask;
 -> future development, the ui will use web sockets or somehow pool for new messages and display them.
 
--UI service: gets requests from the user and puts the requests on a kafka topic; receives messages from the broker and sends them to the gui;
+- UI service: gets requests from the user and puts the requests on a kafka topic; receives messages from the broker and sends them to the gui;
 
--messaging broker: used to move messages from components;
+- messaging broker: used to move messages from components;
 
--data access service: get messages and stores entries, query the ES, etc.; pushes responses back to the topic;
+- data access service: get messages and stores entries, query the ES, etc.; pushes responses back to the topic;
 
--persistence: used mainly for persistence and the fuzzy query feature;
+- persistence: used mainly for persistence and the fuzzy query feature;
 
 - (future) user action analytics: collects data about the users actions and stores them to be later procesed;
 
