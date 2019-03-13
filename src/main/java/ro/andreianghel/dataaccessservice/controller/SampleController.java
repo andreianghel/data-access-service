@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import ro.andreianghel.dataaccessservice.entity.Article;
 import ro.andreianghel.dataaccessservice.service.ArticleService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
@@ -22,7 +21,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 /**
  * @author ananghel on 2/19/2019
  */
-@RestController
+@RestController("/output")
 public class SampleController {
 
 
@@ -33,7 +32,8 @@ public class SampleController {
     private int counter;
 
     @Autowired
-    public SampleController(ArticleService articleService, ElasticsearchTemplate elasticsearchTemplate) {
+    public SampleController(ArticleService articleService,
+                            ElasticsearchTemplate elasticsearchTemplate) {
         this.articleService = articleService;
         this.elasticsearchTemplate = elasticsearchTemplate;
         counter = 10;
@@ -62,7 +62,7 @@ public class SampleController {
         articleService.save(auxArticle);
     }
 
-    @GetMapping("getAll")
+/*    @GetMapping("getAll")
     List<String> getAll() {
         List<String> retList = new ArrayList<>();
         articleService.findAll().forEach(art -> {
@@ -70,30 +70,21 @@ public class SampleController {
         });
 
         return retList;
-    }
+    }*/
+//
+//    @GetMapping("getAllSorted")
+//    List<String> getAllSorted() {
+//        List<String> retList = new ArrayList<>();
+//        articleService.findAllOrderByCreationDate().forEach(art -> {
+//            retList.add(art.getId() + " | " + art.getText() + " | " + art.getCreationDate());
+//        });
+//
+//        return retList;
+//    }
 
-    @GetMapping("getAllSorted")
-    List<String> getAllSorted() {
-        List<String> retList = new ArrayList<>();
-        articleService.findAllOrderByCreationDate().forEach(art -> {
-            retList.add(art.getId() + " | " + art.getText() + " | " + art.getCreationDate());
-        });
-
-        return retList;
-    }
-
-    @GetMapping("getAllOrdered")
+    @GetMapping("getAll")
     List<Article> getAllOrdered() {
-        SearchQuery searchQuery = new NativeSearchQueryBuilder()
-                .withQuery(wildcardQuery("text", "*"))
-                .withSort(SortBuilders.fieldSort("creationDate").order(SortOrder.DESC))
-                .build();
-
-        List<Article> list = elasticsearchTemplate.queryForList(searchQuery, Article.class);
-        System.out.println("begin-----------------");
-        list.forEach(x -> System.out.print(x + " "));
-        System.out.println("\ndone------------------");
-        return list;
+        return articleService.getAllOrdered(elasticsearchTemplate);
     }
 
     @GetMapping("deleteAll")
@@ -104,18 +95,6 @@ public class SampleController {
     @GetMapping("fuzzy/{word}")
     List<Article> fuzzySearch(@PathVariable String word) {
 
-        SearchQuery searchQuery = new NativeSearchQueryBuilder()
-                .withQuery(matchQuery("text", word)
-                        .operator(Operator.AND)
-                        .fuzziness(Fuzziness.TWO) // +2 distance that can be fuzzy
-                        .prefixLength(1)) // just first letter must match
-                .withSort(SortBuilders.fieldSort("creationDate").order(SortOrder.DESC))
-                .build();
-
-
-        List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
-
-
-        return articles;
+        return articleService.fuzzySearch(elasticsearchTemplate, word);
     }
 }

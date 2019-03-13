@@ -25,10 +25,12 @@ public class MessageSenderService {
     }
 
     public void sendResponseForGetAllMessage(String message) {
-        //FIXME this should send a list of all the entries at first
+
+        // FIXME this should send a list of all the entries at first
+        // aggregate somehow all messages and send them in one message
         sendMessage(TOPIC_GET_ALL_RESPONSE, message);
 
-        //FIXME think of a way to send each article in a separate message and buffer in the other end
+
     }
 
     public void sendMessage(String topic, String message) {
